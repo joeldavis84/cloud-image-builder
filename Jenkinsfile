@@ -85,23 +85,12 @@ images.each { imageName, imageValues ->
                     stage("test-image-${imageName}") {
                         def cmd = """
                         mkdir -p ~/.ssh
-                        ansible-playbook -vvv --private-key \${SSH_KEY_LOCATION} \${PLAYBOOK}
+                        sh \${TEST_SCRIPT}
                         """
 
 
                         executeInContainer(containerName: 'ansible-executor', containerScript: cmd, stageVars: params,
                                 loadProps: ["build-image-${imageName}"], credentials: credentials)
-                    }
-
-                    if (env['TAG_NAME']) {
-                        stage("deploy-image-${imageName}") {
-                            def cmd = """
-                            ansible-playbook -vvv --private-key \${SSH_KEY_LOCATION} \${PLAYBOOK_DEPLOY}
-                            """
-
-                            executeInContainer(containerName: 'ansible-executor', containerScript: cmd, stageVars: params,
-                                    loadProps: ["build-image-${imageName}"], credentials: credentials)
-                        }
                     }
 
                 } catch (e) {
@@ -111,7 +100,7 @@ images.each { imageName, imageValues ->
                 } finally {
                     stage("cleanup-image-${imageName}") {
                         def cmd = """
-                        ansible-playbook -vvv --private-key \${SSH_KEY_LOCATION} \${PLAYBOOK_CLEANUP}
+                        sh \${CLEANUP_SCRIPT}
                         """
 
                         executeInContainer(containerName: 'ansible-executor', containerScript: cmd, stageVars: params,
