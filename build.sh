@@ -14,6 +14,6 @@ echo $KUBEVIRT_VERSION > image-files/kubevirt-version
 chmod +x image-files/virtctl
 
   ## Start the actual image build
-echo "Beginning 'packer build' process..
+echo "Beginning 'packer build' process..."
 $PACKER_BIN build -debug -machine-readable --force $PACKER_BUILD_TEMPLATE | tee build.log
 echo "AWS_TEST_AMI=`egrep -m1 -oe 'ami-.{8}' build.log`" >> job.props
