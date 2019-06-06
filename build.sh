@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -x
 
+  ## TODO: Move this clone to something underneath the kubevirt org
+if [ ! -d kubevirt-ansible ]; then
+  git clone --single-branch -b fixes-for-cloud-image-builder https://github.com/rwsu/kubevirt-ansible
+
+  sed -i.bak "s@kubectl taint nodes {{ ansible_fqdn }} node-role.kubernetes.io/master:NoSchedule- || :@kubectl taint nodes --all node-role.kubernetes.io/master-@"  kubevirt-ansible/roles/kubernetes-master/templates/deploy_kubernetes.j2
+
+  #Fix for missing {{ }}
+  sed -i.bak "s/weavenet.stdout/\"{{ weavenet.stdout }}\"/" kubevirt-ansible/roles/kubernetes-master/tasks/main.yml
+fi
+
 echo "Beginning Image Build Process"
 
   ## Determine target release by branch name so that we have a single and obvious source of truth.
