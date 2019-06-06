@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -x
 
+mkdir logs
+touch job.props
+
   ## TODO: Move this clone to something underneath the kubevirt org
 if [ ! -d kubevirt-ansible ]; then
   git clone --single-branch -b fixes-for-cloud-image-builder https://github.com/rwsu/kubevirt-ansible
