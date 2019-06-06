@@ -9,4 +9,4 @@ AWS_REGION=us-west-1
 PLAYBOOK_DEPLOY=aws-ami-publish.yml
 PLAYBOOK=ec2-test-centos.yml
 PLAYBOOK_CLEANUP=ec2-test-centos-cleanup.yml
-IMAGE_NAME=kubevirt-centos
+IMAGE_NAME=kubevirt-centos-dev
