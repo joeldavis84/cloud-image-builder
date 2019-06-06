@@ -17,7 +17,8 @@ fi
 echo "Beginning Image Build Process"
 
   ## Determine target release by branch name so that we have a single and obvious source of truth.
-export KUBEVIRT_VERSION=$(git branch | egrep '^\*' | awk '{print $2}' | sed 's/^release-//')
+#export KUBEVIRT_VERSION=$(git branch | egrep '^\*' | awk '{print $2}' | sed 's/^release-//')
+export KUBEVIRT_VERSION="0.16.1"
 
   ## Used by image bootstrap service and GCP image publish
 echo $KUBEVIRT_VERSION > image-files/kubevirt-version
