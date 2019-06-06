@@ -93,15 +93,13 @@ images.each { imageName, imageValues ->
                                 loadProps: ["build-image-${imageName}"], credentials: credentials)
                     }
 
-                    if (env['TAG_NAME']) {
-                        stage("deploy-image-${imageName}") {
-                            def cmd = """
-                            ansible-playbook -vvv --private-key \${SSH_KEY_LOCATION} \${PLAYBOOK_DEPLOY}
-                            """
+                    stage("deploy-image-${imageName}") {
+                        def cmd = """
+                        ansible-playbook -vvv --private-key \${SSH_KEY_LOCATION} \${PLAYBOOK_DEPLOY}
+                        """
 
-                            executeInContainer(containerName: 'ansible-executor', containerScript: cmd, stageVars: params,
-                                    loadProps: ["build-image-${imageName}"], credentials: credentials)
-                        }
+                        executeInContainer(containerName: 'ansible-executor', containerScript: cmd, stageVars: params,
+                          loadProps: ["build-image-${imageName}"], credentials: credentials)
                     }
 
                 } catch (e) {
