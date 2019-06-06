@@ -4,6 +4,12 @@
     "secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "region": "{{env `AWS_REGION`}}",
     "source_ami": "{{env `AWS_SOURCE_AMI`}}",
+    "launch_block_device_mappings": [{
+      "device_name": "/dev/xvda",
+      "volume_size": 15,
+      "volume_type": "gp2",
+      "delete_on_termination": true
+    }],
     "instance_type": "{{env `AWS_BUILD_INSTANCE_TYPE`}}",
     "subnet_id": "{{env `AWS_SUBNET_ID`}}",
     "security_group": "{{env `AWS_SECURITY_GROUP_ID`}}",
