@@ -21,6 +21,7 @@ export KUBEVIRT_VERSION=$(git branch | egrep '^\*' | awk '{print $2}' | sed 's/^
 
   ## Used by image bootstrap service and GCP image publish
 echo $KUBEVIRT_VERSION > image-files/kubevirt-version
+echo $KUBEVIRT_VERSION > kubevirt-version
 
   ## Download virtctl if it's not already present
 [ -f virtctl ] || curl -L -o image-files/virtctl https://github.com/kubevirt/kubevirt/releases/download/v${KUBEVIRT_VERSION}/virtctl-v${KUBEVIRT_VERSION}-linux-amd64
