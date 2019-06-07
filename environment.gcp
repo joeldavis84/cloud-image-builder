@@ -1,3 +1,4 @@
+KUBEVIRT_VERSION=0.16.1
 PACKER_BIN=./packer
 PACKER_BUILD_TEMPLATE=kubevirt-gcp-centos.json
 SERVICE_ACCOUNT_EMAIL=push-button-ci@cnvlab-209908.iam.gserviceaccount.com
