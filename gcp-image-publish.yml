@@ -170,16 +170,6 @@
          credentials_file: "{{ credentials_file }}"
          project_id: "{{ project_id }}"
 
-    - name: ensure delete uploader instance
-      gce:
-         instance_names: "{{ publisher_instance_name }}"
-         zone: "{{ zone }}"
-         state: absent
-         service_account_email: "{{ service_account_email }}"
-         credentials_file: "{{ credentials_file }}"
-         project_id: "{{ project_id }}"
-
-
     -  name: Remove image disk
        gce_pd:
         name: "{{ image }}-source-disk"

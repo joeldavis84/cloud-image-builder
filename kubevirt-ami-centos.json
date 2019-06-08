@@ -20,6 +20,7 @@
     "ssh_username": "centos",
     "ami_description": "KubeVirt push button trial based on {{user `kubevirt_version`}}. A minimum of 4GB of memory is recommended.",
     "ami_block_device_mappings": [{
+      "device_name": "/dev/sda1",
       "volume_size": "15",
       "volume_type": "gp2",
       "delete_on_termination": true
