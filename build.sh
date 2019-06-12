@@ -3,7 +3,7 @@ set -x
 
 mkdir logs
 touch job.props
-export KUBEVIRT_VERSION
+export KUBEVIRT_VERSION="0.16.1"
 
   ## TODO: Move this clone to something underneath the kubevirt org
 if [ ! -d kubevirt-ansible ]; then
