@@ -17,7 +17,6 @@ fi
 
 echo "Beginning Image Build Process"
 
-
   ## Used by image bootstrap service and GCP image publish
 echo $KUBEVIRT_VERSION > image-files/kubevirt-version
 echo $KUBEVIRT_VERSION > kubevirt-version

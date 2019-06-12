@@ -10,3 +10,4 @@ PLAYBOOK_DEPLOY=aws-ami-publish.yml
 PLAYBOOK=ec2-test-centos.yml
 PLAYBOOK_CLEANUP=ec2-test-centos-cleanup.yml
 IMAGE_NAME=kubevirt-centos-dev
+KUBEVIRT_VERSION=0.16.1
